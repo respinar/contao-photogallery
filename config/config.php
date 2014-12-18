@@ -11,6 +11,33 @@
  * @copyright respinar 2014
  */
 
+/**
+ * Back end modules
+ */
+array_insert($GLOBALS['BE_MOD']['content'], 1, array
+(
+	'photogallery' => array
+	(
+		'tables'     => array('tl_photogallery_category','tl_photogallery_album'),
+		'icon'       => 'system/modules/photogallery/assets/icon.png',
+	)
+));
+
+/**
+ * Front end modules
+ */
+
+array_insert($GLOBALS['FE_MOD'], 2, array
+(
+	'photogallery' => array
+	(
+		'photogallery_list'    => 'ModulePhotogalleryList',
+		'photogallery_detail'  => 'ModulePhotogalleryDetail'
+	)
+));
+
+#$GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Photogallery', 'getSearchablePages');
+
 
 /**
  * BACK END MODULES
