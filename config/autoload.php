@@ -26,14 +26,15 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Classes
-	'photogallery\Photogallery'             => 'system/modules/photogallery/classes/Photogallery.php',
+	'photogallery\Photogallery'              => 'system/modules/photogallery/classes/Photogallery.php',
 
 	// Modules
-	'photogallery\ModulePhotogalleryList'   => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
-	'photogallery\ModulePhotogalleryDetail' => 'system/modules/photogallery/modules/ModulePhotogalleryDetail.php',
+	'photogallery\ModulePhotogalleryList'    => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
+	'photogallery\ModulePhotogalleryDetail'  => 'system/modules/photogallery/modules/ModulePhotogalleryDetail.php',
 
 	// Models
-	'photogallery\ModuleModel'              => 'system/modules/photogallery/models/ModuleModel.php',
+	'photogallery\PhotogalleryCategoryModel' => 'system/modules/photogallery/models/PhotogalleryCategoryModel.php',
+	'photogallery\PhotogalleryAlbumModel'    => 'system/modules/photogallery/models/PhotogalleryAlbumModel.php',
 ));
 
 

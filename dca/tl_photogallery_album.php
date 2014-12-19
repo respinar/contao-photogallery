@@ -22,12 +22,15 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
+		'ptable'                      => 'tl_photogallery_category',
 		'enableVersioning'            => true,
 		'sql' => array
 		(
 			'keys' => array
 			(
-				'id' => 'primary'
+				'id'    => 'primary',
+				'pid'   => 'index',
+				'alias' => 'index'
 			)
 		)
 	),
@@ -37,14 +40,12 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 1,
-			'fields'                  => array(''),
-			'flag'                    => 1
-		),
-		'label' => array
-		(
-			'fields'                  => array(''),
-			'format'                  => '%s'
+			'mode'                    => 4,
+			'fields'                  => array('date DESC'),
+			'headerFields'            => array('title', 'jumpTo', 'tstamp', 'protected'),
+			'panelLayout'             => 'filter;sort,search,limit',
+			'child_record_callback'   => array('tl_photogallery_album', 'listAlbums'),
+			'child_record_class'      => 'no_padding'
 		),
 		'global_operations' => array
 		(
@@ -86,29 +87,18 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 		)
 	),
 
-	// Select
-	'select' => array
-	(
-		'buttons_callback' => array()
-	),
-
-	// Edit
-	'edit' => array
-	(
-		'buttons_callback' => array()
-	),
-
 	// Palettes
 	'palettes' => array
 	(
-		'__selector__'                => array(''),
-		'default'                     => '{title_legend},title;'
+		'__selector__'                => array('addImage','published'),
+		'default'                     => '{title_legend},title,featured,alias,author;{date_legend},location,photographer,date,time;{image_legend},addImage;{album_legend},multiSRC;{teaser_legend},teaser;{publish_legend},published'
 	),
 
 	// Subpalettes
 	'subpalettes' => array
 	(
-		''                            => ''
+		'addImage'                    => 'singleSRC,alt,caption',
+		'published'                   => 'start,stop'
 	),
 
 	// Fields
@@ -117,6 +107,12 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 		'id' => array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL auto_increment"
+		),
+		'pid' => array
+		(
+			'foreignKey'              => 'tl_photogallery_category.title',
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
 		),
 		'tstamp' => array
 		(
@@ -127,8 +123,208 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['title'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255,'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'alias' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['alias'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true,'rgxp'=>'alias', 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+		),
+		'author' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['author'],
+			'default'                 => BackendUser::getInstance()->id,
+			'exclude'                 => true,
+			'search'                  => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'inputType'               => 'select',
+			'foreignKey'              => 'tl_user.name',
+			'eval'                    => array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'hasOne', 'load'=>'eager')
+		),
+		'featured' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['featured'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 m12'),
+			'sql'                     => "char(1) NOT NULL default ''"
+		),
+		'date' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['date'],
+			'default'                 => time(),
+			'exclude'                 => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 8,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'time' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['time'],
+			'default'                 => time(),
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'time', 'doNotCopy'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'location' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['location'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255,'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'photographer' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['photographer'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255,'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'addImage' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['addImage'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('submitOnChange'=>true),
+			'sql'                     => "char(1) NOT NULL default ''"
+		),
+		'singleSRC' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['singleSRC'],
+			'exclude'                 => true,
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'radio', 'mandatory'=>true),
+			'sql'                     => "binary(16) NULL"
+		),
+		'alt' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['alt'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'caption' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['caption'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'allowHtml'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'multiSRC' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['multiSRC'],
+			'exclude'                 => true,
+			'inputType'               => 'fileTree',
+			'eval'                    => array('multiple'=>true, 'fieldType'=>'checkbox', 'orderField'=>'orderSRC', 'files'=>true, 'mandatory'=>true),
+			'sql'                     => "blob NULL",
+			'load_callback' => array
+			(
+				array('tl_photogallery_album', 'setMultiSrcFlags')
+			)
+		),
+		'orderSRC' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['orderSRC'],
+			'sql'                     => "blob NULL"
+		),
+		'teaser' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['teaser'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
+			'sql'                     => "text NULL"
+		),
+		'published' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['published'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'flag'                    => 1,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true),
+			'sql'                     => "char(1) NOT NULL default ''"
+		),
+		'start' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['start'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "varchar(10) NOT NULL default ''"
+		),
+		'stop' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['stop'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "varchar(10) NOT NULL default ''"
 		)
 	)
 );
+
+
+/**
+ * Class tl_photogallery_album
+ *
+ * Provide miscellaneous methods that are used by the data configuration array.
+ * @copyright  Leo Feyer 2005-2014
+ * @author     Leo Feyer <https://contao.org>
+ * @package    Core
+ */
+class tl_photogallery_album extends Backend
+{
+
+
+	/**
+	 * Add the type of input field
+	 * @param array
+	 * @return string
+	 */
+	public function listAlbums($arrRow)
+	{
+		return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#b3b3b3;padding-left:3px">[' . Date::parse(Config::get('datimFormat'), $arrRow['date']) . ']</span></div>';
+	}
+
+	/**
+	 * Dynamically add flags to the "multiSRC" field
+	 * @param mixed
+	 * @param \DataContainer
+	 * @return mixed
+	 */
+	public function setMultiSrcFlags($varValue, DataContainer $dc)
+	{
+		if ($dc->activeRecord)
+		{
+
+			$GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
+			$GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = Config::get('validImageTypes');
+
+		}
+
+		return $varValue;
+	}
+
+}
