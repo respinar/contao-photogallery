@@ -25,14 +25,45 @@ namespace photogallery;
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class ModulePhotogalleryDetail extends \Module
+class ModulePhotogalleryDetail extends \ModulePhotogallery
 {
 
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = '';
+	protected $strTemplate = 'mod_photogallery_detail';
+
+
+	/**
+	 * Display a wildcard in the back end
+	 * @return string
+	 */
+	public function generate()
+	{
+		if (TL_MODE == 'BE')
+		{
+			$objTemplate = new \BackendTemplate('be_wildcard');
+
+			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['photogallery_detail'][0]) . ' ###';
+			$objTemplate->title = $this->headline;
+			$objTemplate->id = $this->id;
+			$objTemplate->link = $this->name;
+			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+
+			return $objTemplate->parse();
+		}
+
+		// Set the item from the auto_item parameter
+		if (!isset($_GET['items']) && $GLOBALS['TL_CONFIG']['useAutoItem'] && isset($_GET['auto_item']))
+		{
+			\Input::setGet('items', \Input::get('auto_item'));
+		}
+
+		$this->photogallery_categories = $this->sortOutProtected(deserialize($this->photogallery_categories));
+
+		return parent::generate();
+	}
 
 
 	/**
@@ -40,6 +71,35 @@ class ModulePhotogalleryDetail extends \Module
 	 */
 	protected function compile()
 	{
+
+		global $objPage;
+
+		$this->Template->albums = '';
+		$this->Template->referer = 'javascript:history.go(-1)';
+		$this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
+
+		$objAlbum = \PhotogalleryAlbumModel::findPublishedByParentAndIdOrAlias(\Input::get('items'),$this->photogallery_categories);
+
+		// Overwrite the page title
+		if ($objAlbum->title != '')
+		{
+			$objPage->pageTitle = strip_tags(strip_insert_tags($objAlbum->title));
+		}
+
+		// Overwrite the page description
+		if ($objProduct->description != '')
+		{
+			$objPage->description = $this->prepareMetaDescription($objAlbum->description);
+		}
+
+		if ($objAlbum->keywords != '')
+		{
+			$GLOBALS['TL_KEYWORDS'] .= (($GLOBALS['TL_KEYWORDS'] != '') ? ', ' : '') . $objAlbum->keywords;
+		}
+
+		$arrAlbum = $this->parseAlbum($objAlbum);
+
+		$this->Template->albums = $arrAlbum;
 
 	}
 }

@@ -31,6 +31,7 @@ ClassLoader::addClasses(array
 	// Modules
 	'photogallery\ModulePhotogalleryList'    => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
 	'photogallery\ModulePhotogalleryDetail'  => 'system/modules/photogallery/modules/ModulePhotogalleryDetail.php',
+	'photogallery\ModulePhotogallery'        => 'system/modules/photogallery/modules/ModulePhotogallery.php',
 
 	// Models
 	'photogallery\PhotogalleryCategoryModel' => 'system/modules/photogallery/models/PhotogalleryCategoryModel.php',
@@ -45,4 +46,6 @@ TemplateLoader::addFiles(array
 (
 	'mod_photogallery_list'   => 'system/modules/photogallery/templates/modules',
 	'mod_photogallery_detail' => 'system/modules/photogallery/templates/modules',
+	'album_full'              => 'system/modules/photogallery/templates/album',
+	'album_short'             => 'system/modules/photogallery/templates/album',
 ));
