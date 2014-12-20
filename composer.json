@@ -1,0 +1,41 @@
+{
+    "name": "respinar/photogallery",
+    "description":"Photo Gallery for Contao",
+    "keywords":["contao", "photo","gallery","album"],
+    "type": "contao-module",
+    "homepage":"https://github.com/respinar/photogallery",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Hamid Abbaszadeh",
+            "email":"info@respinar.com",
+            "homepage":"http://respinar.org/",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/respinar/photogallery/issues"
+    },
+    "require": {
+        "php":">=5.3.2",
+		"contao/core":">=3.2,<=3.4",
+		"contao-community-alliance/composer-plugin":"2.*"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/photogallery"
+            },
+            "transifex": {
+				"project": "photogallery",
+				"prefix": "master-",
+				"languages_cto": "languages",
+				"languages_tx": ".tx"
+			}
+        }
+    }
+}
+
