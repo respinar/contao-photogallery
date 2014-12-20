@@ -91,13 +91,13 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array('addImage','published'),
-		'default'                     => '{title_legend},title,featured,alias,author;{date_legend},location,photographer,date,time;{image_legend},addImage;{album_legend},multiSRC;{teaser_legend},teaser;{publish_legend},published'
+		'default'                     => '{title_legend},title,featured,alias,author;{meta_legend},location,photographer,date,time;{seo_legend:hide},description,keywords;{image_legend},addImage;{album_legend},multiSRC;{teaser_legend},teaser;{publish_legend},published'
 	),
 
 	// Subpalettes
 	'subpalettes' => array
 	(
-		'addImage'                    => 'singleSRC,alt,caption',
+		'addImage'                    => 'singleSRC',
 		'published'                   => 'start,stop'
 	),
 
@@ -212,24 +212,6 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 			'eval'                    => array('filesOnly'=>true, 'extensions'=>Config::get('validImageTypes'), 'fieldType'=>'radio', 'mandatory'=>true),
 			'sql'                     => "binary(16) NULL"
 		),
-		'alt' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['alt'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(255) NOT NULL default ''"
-		),
-		'caption' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['caption'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'allowHtml'=>true, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(255) NOT NULL default ''"
-		),
 		'multiSRC' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['multiSRC'],
@@ -254,6 +236,24 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 			'search'                  => true,
 			'inputType'               => 'textarea',
 			'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
+			'sql'                     => "text NULL"
+		),
+		'keywords' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['keywords'],
+			'exclude'                 => true,
+			'inputType'               => 'textarea',
+			'search'                  => true,
+			'eval'                    => array('style'=>'height:60px', 'decodeEntities'=>true),
+			'sql'                     => "text NULL"
+		),
+		'description' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['description'],
+			'exclude'                 => true,
+			'inputType'               => 'textarea',
+			'search'                  => true,
+			'eval'                    => array('style'=>'height:60px', 'decodeEntities'=>true, 'tl_class'=>'clr'),
 			'sql'                     => "text NULL"
 		),
 		'published' => array
@@ -305,7 +305,15 @@ class tl_photogallery_album extends Backend
 	 */
 	public function listAlbums($arrRow)
 	{
-		return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#b3b3b3;padding-left:3px">[' . Date::parse(Config::get('datimFormat'), $arrRow['date']) . ']</span></div>';
+
+		$objImage = \FilesModel::findByPk($arrRow['singleSRC']);
+
+		if ($objImage !== null)
+		{
+			$strImage = \Image::getHtml(\Image::get($objImage->path, '80', '60', 'center_center'));
+		}
+
+		return '<div style="float:left; margin-right:10px;">'.$strImage.'</div><div class="tl_content_left">' . $arrRow['title'] . ' <p style="color:#b3b3b3;clear:right;padding-top:5px">[' . Date::parse(Config::get('datimFormat'), $arrRow['date']) . ']</p></div>';
 	}
 
 	/**

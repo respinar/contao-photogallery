@@ -35,6 +35,12 @@ abstract class ModulePhotogallery extends \Module
 	 */
 	private static $arrUrlCache = array();
 
+	/**
+	 * Files object
+	 * @var \FilesModel
+	 */
+	protected $objFiles;
+
 
 	/**
 	 * Sort out protected archives
@@ -102,6 +108,7 @@ abstract class ModulePhotogallery extends \Module
 
 		$objTemplate->description = $objAlbum->description;
 		$objTemplate->keywords    = $objAlbum->keywords;
+		$objTemplate->teaser      = $objAlbum->teaser;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
@@ -153,6 +160,15 @@ abstract class ModulePhotogallery extends \Module
 				$arrAlbum['singleSRC'] = $objModel->path;
 				$this->addImageToTemplate($objTemplate, $arrAlbum);
 			}
+		}
+
+		$arrmultiSRC = deserialize($this->multiSRC);
+
+		// if there are files
+		if (is_array($arrmultiSRC) || !empty($arrmultiSRC))
+		{
+
+			return '';
 		}
 
 		return $objTemplate->parse();
@@ -278,5 +294,61 @@ abstract class ModulePhotogallery extends \Module
 
 		return $return;
 	}
+
+
+	/**
+	 * Parse one or more items and return them as array
+	 * @param object
+	 * @param boolean
+	 * @return array
+	 */
+	protected function parseImages($objImages)
+	{
+
+	}
+
+
+		/**
+	 * Parse one or more items and return them as array
+	 * @param object
+	 * @param boolean
+	 * @return array
+	 */
+	protected function parseImage($singleSRC)
+	{
+
+		$objModel = \FilesModel::findByUuid($singleSRC);
+
+		if ($objModel === null)
+		{
+			if (!\Validator::isUuid($singleSRC))
+			{
+				$objTemplate->text = '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
+			}
+		}
+		elseif (is_file(TL_ROOT . '/' . $objModel->path))
+		{
+			// Do not override the field now that we have a model registry (see #6303)
+			$arrAlbum = $objAlbum->row();
+
+			// Override the default image size
+			if ($this->imgSize != '')
+			{
+				$size = deserialize($this->imgSize);
+
+				if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
+				{
+					$arrAlbum['size'] = $this->imgSize;
+				}
+			}
+
+			$arrAlbum['singleSRC'] = $objModel->path;
+			$this->addImageToTemplate($objTemplate, $arrAlbum);
+		}
+
+
+
+	}
+
 
 }
