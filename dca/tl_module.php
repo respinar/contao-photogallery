@@ -22,7 +22,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_list'] =   '{title_leg
 $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_detail'] = '{title_legend},name,headline,type;
                                                                       {catalog_legend},photogallery_categories;
                                                                       {template_legend},photogallery_metaFields,album_template,customTpl;
-                                                                      {image_legend},itemClass,imgSize;
+                                                                      {image_legend},itemClass,imgSize,sortBy,fullsize;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 
@@ -86,6 +86,17 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['itemClass'] = array
 	'inputType'               => 'text',
 	'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['sortBy'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['sortBy'],
+	'exclude'                 => true,
+	'inputType'               => 'select',
+	'options'                 => array('custom', 'name_asc', 'name_desc', 'date_asc', 'date_desc', 'random'),
+	'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
+	'eval'                    => array('tl_class'=>'w50'),
+	'sql'                     => "varchar(32) NOT NULL default ''"
 );
 
 /**

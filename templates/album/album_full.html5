@@ -1,5 +1,5 @@
 
-<div class="layout_full block<?php echo $this->class; ?>">
+<div class="layout_full block">
 
   <h2><?php echo $this->title; ?></h2>
 
@@ -11,16 +11,22 @@
 	<p class="teaser"><?php echo $this->teaser; ?></p>
   <?php endif; ?>
 
-  <?php if ($this->addImage): ?>
-    <figure class="image_container">
 
-      <?php $this->insert('picture_default', $this->picture); ?>
+  <?php foreach ($this->body as $image): ?>
+        <div class="image <?php echo $this->itemClass; ?>">
+          <figure class="image_container"<?php if ($image->margin): ?> style="<?php echo $image->margin; ?>"<?php endif; ?>>
+            <?php if ($image->href): ?>
+              <a href="<?php echo $image->href; ?>"<?php echo $image->attributes; ?> title="<?php echo $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
+            <?php else: ?>
+              <?php $this->insert('picture_default', $image->picture); ?>
+            <?php endif; ?>
+            <?php if ($image->caption): ?>
+              <figcaption class="caption" style="width:<?php echo $image->arrSize[0]; ?>px"><?php echo $image->caption; ?></figcaption>
+            <?php endif; ?>
+          </figure>
+        </div>
+  <?php endforeach; ?>
 
-      <?php if ($this->caption): ?>
-        <figcaption class="caption" style="width:<?php echo $this->arrSize[0]; ?>px"><?php echo $this->caption; ?></figcaption>
-      <?php endif; ?>
 
-    </figure>
-  <?php endif; ?>
 
 </div>

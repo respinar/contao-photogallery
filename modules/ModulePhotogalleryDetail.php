@@ -97,7 +97,7 @@ class ModulePhotogalleryDetail extends \ModulePhotogallery
 			$GLOBALS['TL_KEYWORDS'] .= (($GLOBALS['TL_KEYWORDS'] != '') ? ', ' : '') . $objAlbum->keywords;
 		}
 
-		$arrAlbum = $this->parseAlbum($objAlbum);
+		$arrAlbum = $this->parseAlbumFull($objAlbum);
 
 		$this->Template->albums = $arrAlbum;
 
