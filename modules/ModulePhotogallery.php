@@ -55,7 +55,7 @@ abstract class ModulePhotogallery extends \Module
 		}
 
 		$this->import('FrontendUser', 'User');
-		$objCategory = \CatalogCategoryModel::findMultipleByIds($arrCategories);
+		$objCategory = \PhotogalleryCategoryModel::findMultipleByIds($arrCategories);
 		$arrCategories = array();
 
 		if ($objCategory !== null)
