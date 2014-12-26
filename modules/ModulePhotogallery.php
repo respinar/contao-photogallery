@@ -102,13 +102,6 @@ abstract class ModulePhotogallery extends \Module
 
 		$objTemplate->class = (($this->itemClass != '') ? ' ' . $this->itemClass : '') . $strClass;
 
-		$objTemplate->title       = $objAlbum->title;
-		$objTemplate->alias       = $objAlbum->alias;
-
-		$objTemplate->description = $objAlbum->description;
-		$objTemplate->keywords    = $objAlbum->keywords;
-		$objTemplate->teaser      = $objAlbum->teaser;
-
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
 
