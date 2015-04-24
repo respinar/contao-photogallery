@@ -2,7 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-
   <?php echo $this->albums; ?>
 
   <!-- indexer::stop -->

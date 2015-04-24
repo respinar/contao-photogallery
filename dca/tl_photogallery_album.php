@@ -90,14 +90,13 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'__selector__'                => array('addImage','published'),
-		'default'                     => '{title_legend},title,featured,alias,author;{meta_legend},location,photographer,date,time;{seo_legend:hide},description,keywords;{image_legend},addImage;{album_legend},multiSRC;{teaser_legend},teaser;{publish_legend},published'
+		'__selector__'                => array('published'),
+		'default'                     => '{title_legend},title,featured,alias,author;{meta_legend},location,photographer,date,time;{poster_legend},singleSRC;{album_legend},multiSRC;{teaser_legend},teaser;{seo_legend:hide},description,keywords;{publish_legend},published'
 	),
 
 	// Subpalettes
 	'subpalettes' => array
 	(
-		'addImage'                    => 'singleSRC',
 		'published'                   => 'start,stop'
 	),
 
@@ -195,14 +194,6 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>255,'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
-		),
-		'addImage' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['addImage'],
-			'exclude'                 => true,
-			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true),
-			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'singleSRC' => array
 		(

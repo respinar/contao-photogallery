@@ -15,10 +15,12 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
+$GLOBALS['TL_LANG']['MOD']['photogallery'] = array('Photogallery', 'Manege photo gallery and albums');
 
 
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['photogallery'] = 'Photogallery';
+$GLOBALS['TL_LANG']['FMD']['photogallery_list'] = array('Photogallery list', '');
+$GLOBALS['TL_LANG']['FMD']['photogallery_detail'] = array('Photogallery detail', '');

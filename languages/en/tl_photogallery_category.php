@@ -15,13 +15,18 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_photogallery_category']['title'] = array('Title', 'Please enter the category title.');
+$GLOBALS['TL_LANG']['tl_photogallery_category']['title']     = array('Category title', 'Please enter the category title.');
+$GLOBALS['TL_LANG']['tl_photogallery_category']['jumpTo']    = array('Redirect page', 'Please choose the list page to which visitors will be redirected when clicking an item.');
+$GLOBALS['TL_LANG']['tl_photogallery_category']['protected'] = array('Protect category', 'Show category items to certain member groups only.');
+$GLOBALS['TL_LANG']['tl_photogallery_category']['groups']    = array('Allowed member groups', 'These groups will be able to see the items in this catalog.');
 
 
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_photogallery_category']['title_legend'] = 'Title';
+$GLOBALS['TL_LANG']['tl_photogallery_category']['title_legend']     = 'Title';
+$GLOBALS['TL_LANG']['tl_photogallery_category']['redirect_legend']  = 'Redirect';
+$GLOBALS['TL_LANG']['tl_photogallery_category']['protected_legend'] = 'Access protection';
 
 
 /**

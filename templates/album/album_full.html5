@@ -1,5 +1,5 @@
 
-<div class="layout_full block">
+<div class="album_full block">
 
   <h2><?php echo $this->title; ?></h2>
 

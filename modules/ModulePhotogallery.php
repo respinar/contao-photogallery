@@ -100,7 +100,7 @@ abstract class ModulePhotogallery extends \Module
 		$objTemplate = new \FrontendTemplate($this->album_template);
 		$objTemplate->setData($objAlbum->row());
 
-		$objTemplate->class = (($this->itemClass != '') ? ' ' . $this->itemClass : '') . $strClass;
+		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
@@ -146,8 +146,8 @@ abstract class ModulePhotogallery extends \Module
 		$objTemplate = new \FrontendTemplate($this->album_template);
 		$objTemplate->setData($objAlbum->row());
 
-		$objTemplate->class = (($this->itemClass != '') ? ' ' . $this->itemClass : '') . $strClass;
-		$objTemplate->itemClass = $this->itemClass;
+		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
+		$objTemplate->itemClass = $this->item_Class;
 
 
 		$objTemplate->title       = $objAlbum->title;
@@ -411,7 +411,7 @@ abstract class ModulePhotogallery extends \Module
 
 		while ($objAlbums->next())
 		{
-			$arrAlbums[] = $this->parseAlbum($objAlbums, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'), $count);
+			$arrAlbums[] = $this->parseAlbum($objAlbums, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % $this->item_perRow) == 0) ? ' last_col' : '') . ((($count % $this->item_perRow) == 1) ? ' first_col' : ''), $count);
 		}
 
 		return $arrAlbums;
