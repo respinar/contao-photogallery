@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array('published'),
-		'default'                     => '{title_legend},title,featured,alias,author;{meta_legend},location,photographer,date,time;{poster_legend},singleSRC;{album_legend},multiSRC;{teaser_legend},teaser;{seo_legend:hide},description,keywords;{publish_legend},published'
+		'default'                     => '{title_legend},title,featured,alias,author;{meta_legend},location,photographer,date,time;{poster_legend},singleSRC;{album_legend},multiSRC;{teaser_legend},teaser;{seo_legend:hide},description;{publish_legend},published'
 	),
 
 	// Subpalettes
@@ -227,15 +227,6 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 			'search'                  => true,
 			'inputType'               => 'textarea',
 			'eval'                    => array('rte'=>'tinyMCE', 'tl_class'=>'clr'),
-			'sql'                     => "text NULL"
-		),
-		'keywords' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_photogallery_album']['keywords'],
-			'exclude'                 => true,
-			'inputType'               => 'textarea',
-			'search'                  => true,
-			'eval'                    => array('style'=>'height:60px', 'decodeEntities'=>true),
 			'sql'                     => "text NULL"
 		),
 		'description' => array

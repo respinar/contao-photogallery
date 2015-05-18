@@ -92,11 +92,6 @@ class ModulePhotogalleryDetail extends \ModulePhotogallery
 			$objPage->description = $this->prepareMetaDescription($objAlbum->description);
 		}
 
-		if ($objAlbum->keywords != '')
-		{
-			$GLOBALS['TL_KEYWORDS'] .= (($GLOBALS['TL_KEYWORDS'] != '') ? ', ' : '') . $objAlbum->keywords;
-		}
-
 		$arrAlbum = $this->parseAlbumFull($objAlbum);
 
 		$this->Template->albums = $arrAlbum;
