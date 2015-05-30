@@ -29,7 +29,7 @@
                 "": "system/modules/photogallery"
             },
             "transifex": {
-                "project": "photogallery",
+                "project": "contao-photogallery",
                 "prefix": "master-",
                 "languages_cto": "languages",
                 "languages_tx": ".tx"
