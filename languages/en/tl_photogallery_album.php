@@ -23,8 +23,7 @@ $GLOBALS['TL_LANG']['tl_photogallery_album']['location']     = array('Location',
 $GLOBALS['TL_LANG']['tl_photogallery_album']['photographer'] = array('Photographer', '');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['date']         = array('Date', '');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['time']         = array('Time', '');
-$GLOBALS['TL_LANG']['tl_photogallery_album']['description']  = array('Page description', '');
-$GLOBALS['TL_LANG']['tl_photogallery_album']['keywords']     = array('Meta keywords', '');
+$GLOBALS['TL_LANG']['tl_photogallery_album']['description']  = array('Description', '');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['singleSRC']    = array('Poster source image', '');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['multiSRC']     = array('Album source images', '');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['teaser']       = array('Teaser', '');
@@ -48,7 +47,7 @@ $GLOBALS['TL_LANG']['tl_photogallery_album']['publish_legend'] = 'Publish settin
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_photogallery_album']['new']    = array('New album', 'Create a new album');
+$GLOBALS['TL_LANG']['tl_photogallery_album']['new']    = array('New album', 'Add a new album');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['show']   = array('Album details', 'Show the details of album ID %s');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['edit']   = array('Edit album', 'Edit album ID %s');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['cut']    = array('Move album', 'Move album ID %s');

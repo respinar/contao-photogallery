@@ -21,6 +21,6 @@ $GLOBALS['TL_LANG']['MOD']['photogallery'] = array('Photogallery', 'Manege photo
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD']['photogallery'] = 'Photogallery';
-$GLOBALS['TL_LANG']['FMD']['photogallery_list'] = array('Photogallery list', '');
-$GLOBALS['TL_LANG']['FMD']['photogallery_detail'] = array('Photogallery detail', '');
+$GLOBALS['TL_LANG']['FMD']['photogallery']        = 'Photogallery';
+$GLOBALS['TL_LANG']['FMD']['photogallery_list']   = array('Album list', '');
+$GLOBALS['TL_LANG']['FMD']['photogallery_detail'] = array('Album viewer', '');
