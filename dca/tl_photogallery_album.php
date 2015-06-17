@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_photogallery_album'] = array
 		(
 			'mode'                    => 4,
 			'fields'                  => array('date DESC'),
-			'headerFields'            => array('title', 'jumpTo', 'tstamp', 'protected'),
+			'headerFields'            => array('title', 'jumpTo','protected'),
 			'panelLayout'             => 'filter;sort,search,limit',
 			'child_record_callback'   => array('tl_photogallery_album', 'listAlbums'),
 			'child_record_class'      => 'no_padding'
