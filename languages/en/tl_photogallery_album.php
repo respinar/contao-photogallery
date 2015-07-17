@@ -47,7 +47,7 @@ $GLOBALS['TL_LANG']['tl_photogallery_album']['publish_legend'] = 'Publish settin
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_photogallery_album']['new']    = array('New album', 'Add a new album');
+$GLOBALS['TL_LANG']['tl_photogallery_album']['new']    = array('Add album', 'Add a new album');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['show']   = array('Album details', 'Show the details of album ID %s');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['edit']   = array('Edit album', 'Edit album ID %s');
 $GLOBALS['TL_LANG']['tl_photogallery_album']['cut']    = array('Move album', 'Move album ID %s');

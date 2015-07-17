@@ -8,9 +8,8 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-05-30T10:40:01+04:30
+ * last-updated: 2015-05-30T10:40:17+04:30
  */
-
 
 $GLOBALS['TL_LANG']['tl_photogallery_album']['album_legend']      = 'تصاویر آلبوم';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['alias']['0']        = 'اسم مستعار آلبوم';
@@ -29,7 +28,7 @@ $GLOBALS['TL_LANG']['tl_photogallery_album']['featured']['0']     = 'آلبوم 
 $GLOBALS['TL_LANG']['tl_photogallery_album']['location']['0']     = 'موقعیت';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['meta_legend']       = 'متا';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['multiSRC']['0']     = 'تصویرهای منبع آلبوم';
-$GLOBALS['TL_LANG']['tl_photogallery_album']['new']['0']          = 'آلبوم جدید';
+$GLOBALS['TL_LANG']['tl_photogallery_album']['new']['0']          = 'افزودن آلبوم';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['new']['1']          = 'افزودن آلبوم جدید';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['photographer']['0'] = 'عکاس';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['poster_legend']     = 'تصویر پوستر';
@@ -38,6 +37,7 @@ $GLOBALS['TL_LANG']['tl_photogallery_album']['published']['0']    = 'انتشا�
 $GLOBALS['TL_LANG']['tl_photogallery_album']['seo_legend']        = 'سئو';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['show']['0']         = 'جزئیات آلبوم';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['show']['1']         = 'نمایش جزئیات آلبوم شناسه‌ی %s';
+$GLOBALS['TL_LANG']['tl_photogallery_album']['singleSRC']['0']    = 'تصویر منبع پوستر';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['start']['0']        = 'نمایش از';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['stop']['0']         = 'نمایش تا';
 $GLOBALS['TL_LANG']['tl_photogallery_album']['teaser']['0']       = 'تیزر';
