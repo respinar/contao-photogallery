@@ -13,14 +13,14 @@
 
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_list'] =   '{title_legend},name,headline,type;
-                                                                      {catalog_legend},photogallery_categories;
+                                                                      {catalog_legend},photogalleries;
                                                                       {config_legend},photogallery_featured,photogallery_detailModule,numberOfItems,perPage,skipFirst;
                                                                       {template_legend},photogallery_metaFields,album_template,customTpl;
                                                                       {album_legend},item_Class,item_perRow,imgSize;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_detail'] = '{title_legend},name,headline,type;
-                                                                      {catalog_legend},photogallery_categories;
+                                                                      {catalog_legend},photogalleries;
                                                                       {template_legend},photogallery_metaFields,album_template,customTpl;
                                                                       {image_legend},item_Class,item_perRow,imgSize,sortBy,fullsize;
                                                                       {protected_legend:hide},protected;
@@ -29,9 +29,9 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_detail'] = '{title_leg
 /**
  * Add fields to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_categories'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['photogalleries'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_module']['photogallery_categories'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_module']['photogalleries'],
 	'exclude'              => true,
 	'inputType'            => 'checkbox',
 	'options_callback'     => array('tl_module_photogallery', 'getCategories'),
@@ -131,7 +131,7 @@ class tl_module_photogallery extends Backend
 		//}
 
 		$arrCategories = array();
-		$objCategories = $this->Database->execute("SELECT id, title FROM tl_photogallery_category ORDER BY title");
+		$objCategories = $this->Database->execute("SELECT id, title FROM tl_photogallery ORDER BY title");
 
 		while ($objCategories->next())
 		{
@@ -171,4 +171,3 @@ class tl_module_photogallery extends Backend
 		return $arrModules;
 	}
 }
-

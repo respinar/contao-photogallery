@@ -48,29 +48,29 @@ class Photogallery extends \Frontend
 		$arrProcessed = array();
 
 		// Get all catalog categories
-		$objCategory = \PhotogalleryCategoryModel::findByProtected('');
+		$objPhotogallery = \PhotogalleryModel::findByProtected('');
 
 		// Walk through each archive
-		if ($objCategory !== null)
+		if ($objPhotogallery !== null)
 		{
-			while ($objCategory->next())
+			while ($objPhotogallery->next())
 			{
 				// Skip catalog categories without target page
-				if (!$objCategory->jumpTo)
+				if (!$objPhotogallery->jumpTo)
 				{
 					continue;
 				}
 
 				// Skip catalog categories outside the root nodes
-				if (!empty($arrRoot) && !in_array($objCategory->jumpTo, $arrRoot))
+				if (!empty($arrRoot) && !in_array($objPhotogallery->jumpTo, $arrRoot))
 				{
 					continue;
 				}
 
 				// Get the URL of the jumpTo page
-				if (!isset($arrProcessed[$objCategory->jumpTo]))
+				if (!isset($arrProcessed[$objPhotogallery->jumpTo]))
 				{
-					$objParent = \PageModel::findWithDetails($objCategory->jumpTo);
+					$objParent = \PageModel::findWithDetails($objPhotogallery->jumpTo);
 
 					// The target page does not exist
 					if ($objParent === null)
@@ -94,13 +94,13 @@ class Photogallery extends \Frontend
 					$domain = ($objParent->rootUseSSL ? 'https://' : 'http://') . ($objParent->domain ?: \Environment::get('host')) . TL_PATH . '/';
 
 					// Generate the URL
-					$arrProcessed[$objCategory->jumpTo] = $domain . $this->generateFrontendUrl($objParent->row(), ((\Config::get('useAutoItem') && !\Config::get('disableAlias')) ?  '/%s' : '/items/%s'), $objParent->language);
+					$arrProcessed[$objPhotogallery->jumpTo] = $domain . $this->generateFrontendUrl($objParent->row(), ((\Config::get('useAutoItem') && !\Config::get('disableAlias')) ?  '/%s' : '/items/%s'), $objParent->language);
 				}
 
-				$strUrl = $arrProcessed[$objCategory->jumpTo];
+				$strUrl = $arrProcessed[$objPhotogallery->jumpTo];
 
 				// Get the items
-				$objAlbum = \PhotogalleryAlbumModel::findPublishedByPid($objCategory->id);
+				$objAlbum = \PhotogalleryAlbumModel::findPublishedByPid($objPhotogallery->id);
 
 				if ($objAlbum !== null)
 				{

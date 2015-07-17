@@ -53,10 +53,10 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 			return $objTemplate->parse();
 		}
 
-		$this->photogallery_categories = $this->sortOutProtected(deserialize($this->photogallery_categories));
+		$this->photogalleries = $this->sortOutProtected(deserialize($this->photogalleries));
 
 		// No photogallery categries available
-		if (!is_array($this->photogallery_categories) || empty($this->photogallery_categories))
+		if (!is_array($this->photogalleries) || empty($this->photogalleries))
 		{
 			return '';
 		}
@@ -103,7 +103,7 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 		$this->Template->albums = array();
 		$this->Template->empty = $GLOBALS['TL_LANG']['MSC']['emptyPhotogallery'];
 
-		$intTotal = \PhotogalleryAlbumModel::countPublishedByPids($this->photogallery_categories);
+		$intTotal = \PhotogalleryAlbumModel::countPublishedByPids($this->photogalleries);
 
 		if ($intTotal < 1)
 		{
@@ -157,11 +157,11 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 		// Get the items
 		if (isset($limit))
 		{
-			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogallery_categories, $blnFeatured, $limit, $offset);
+			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, $limit, $offset);
 		}
 		else
 		{
-			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogallery_categories, $blnFeatured, 0, $offset);
+			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, 0, $offset);
 		}
 
 
@@ -171,7 +171,7 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 			$this->Template->albums = $this->parseAlbums($objAlbums);
 		}
 
-		$this->Template->gategories = $this->photogallery_categories;
+		$this->Template->gategories = $this->photogalleries;
 
 	}
 }

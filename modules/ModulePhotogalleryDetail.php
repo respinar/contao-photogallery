@@ -60,7 +60,7 @@ class ModulePhotogalleryDetail extends \ModulePhotogallery
 			\Input::setGet('items', \Input::get('auto_item'));
 		}
 
-		$this->photogallery_categories = $this->sortOutProtected(deserialize($this->photogallery_categories));
+		$this->photogalleries = $this->sortOutProtected(deserialize($this->photogalleries));
 
 		return parent::generate();
 	}
@@ -78,7 +78,7 @@ class ModulePhotogalleryDetail extends \ModulePhotogallery
 		$this->Template->referer = 'javascript:history.go(-1)';
 		$this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
 
-		$objAlbum = \PhotogalleryAlbumModel::findPublishedByParentAndIdOrAlias(\Input::get('items'),$this->photogallery_categories);
+		$objAlbum = \PhotogalleryAlbumModel::findPublishedByParentAndIdOrAlias(\Input::get('items'),$this->photogalleries);
 
 		// Overwrite the page title
 		if ($objAlbum->title != '')

@@ -55,7 +55,7 @@ abstract class ModulePhotogallery extends \Module
 		}
 
 		$this->import('FrontendUser', 'User');
-		$objCategory = \PhotogalleryCategoryModel::findMultipleByIds($arrCategories);
+		$objCategory = \PhotogalleryModel::findMultipleByIds($arrCategories);
 		$arrCategories = array();
 
 		if ($objCategory !== null)
@@ -107,7 +107,7 @@ abstract class ModulePhotogallery extends \Module
 
 		$arrMeta = $this->getMetaFields($objAlbum);
 
-		$objTemplate->category    = $objAlbum->getRelated('pid');
+		$objTemplate->gallery    = $objAlbum->getRelated('pid');
 
 		$objTemplate->count = $intCount; // see #5708
 
@@ -162,7 +162,7 @@ abstract class ModulePhotogallery extends \Module
 
 		$arrMeta = $this->getMetaFields($objAlbum);
 
-		$objTemplate->category    = $objAlbum->getRelated('pid');
+		$objTemplate->gallery    = $objAlbum->getRelated('pid');
 
 		$objTemplate->count = $intCount; // see #5708
 

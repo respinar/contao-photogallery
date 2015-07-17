@@ -18,19 +18,19 @@
 namespace photogallery;
 
 /**
- * Class PhotogalleryCategoryModel
+ * Class PhotogalleryModel
  *
  * @copyright  respinar 2014
  * @author     Hamid Abbaszadeh
  * @package    Photogallery
  */
-class PhotogalleryCategoryModel extends \Model
+class PhotogalleryModel extends \Model
 {
 
 	/**
 	 * Name of the table
 	 * @var string
 	 */
-	protected static $strTable = 'tl_photogallery_category';
+	protected static $strTable = 'tl_photogallery';
 
 }

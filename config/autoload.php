@@ -34,7 +34,7 @@ ClassLoader::addClasses(array
 	'photogallery\ModulePhotogallery'        => 'system/modules/photogallery/modules/ModulePhotogallery.php',
 
 	// Models
-	'photogallery\PhotogalleryCategoryModel' => 'system/modules/photogallery/models/PhotogalleryCategoryModel.php',
+	'photogallery\PhotogalleryModel' => 'system/modules/photogallery/models/PhotogalleryModel.php',
 	'photogallery\PhotogalleryAlbumModel'    => 'system/modules/photogallery/models/PhotogalleryAlbumModel.php',
 ));
 
