@@ -497,13 +497,13 @@ abstract class ModulePhotogallery extends \Module
 			switch ($field)
 			{
 				case 'date':
-					$return['date'] = \Date::parse($objPage->datimFormat, $objProduct->date);
+					$return['date'] = \Date::parse($objPage->datimFormat, $objAlbum->date);
 					break;
 				case 'location':
-					$return['location'] = $objProduct->location;
+					$return['location'] = $objAlbum->location;
 					break;
 				case 'photographer':
-					$return['photographer'] = $objProduct->photographer;
+					$return['photographer'] = $objAlbum->photographer;
 					break;
 			}
 		}
