@@ -411,8 +411,13 @@ abstract class ModulePhotogallery extends \Module
 
 		while ($objAlbums->next())
 		{
-			$arrAlbums[] = $this->parseAlbum($objAlbums, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % $this->item_perRow) == 0) ? ' last_col' : '') . ((($count % $this->item_perRow) == 1) ? ' first_col' : ''), $count);
+            
+            $objAlbum = $objAlbums->current();
+            
+			$arrAlbums[] = $this->parseAlbum($objAlbum, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % $this->item_perRow) == 0) ? ' last_col' : '') . ((($count % $this->item_perRow) == 1) ? ' first_col' : ''), $count);
 		}
+
+		$arrAlbums = array_chunk($arrAlbums,$this->item_perRow);
 
 		return $arrAlbums;
 	}

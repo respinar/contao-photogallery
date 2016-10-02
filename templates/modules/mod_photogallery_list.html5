@@ -5,7 +5,9 @@
   <?php if (empty($this->albums)): ?>
     <p class="empty"><?php echo $this->empty; ?></p>
   <?php else: ?>
-    <?php echo implode('', $this->albums); ?>
+    <div class="albums_list">
+      <?php foreach($this->albums as $albums) { echo '<div class="row">'.implode('', $albums).'</div>'; } ?>
+    </div>
     <?php echo $this->pagination; ?>
   <?php endif; ?>
 
