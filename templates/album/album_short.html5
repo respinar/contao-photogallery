@@ -1,11 +1,11 @@
 
-<div class="album_short block<?php echo $this->class; ?>">
+<div class="album_short block<?= $this->class; ?>">
 
   <?php if ($this->addImage): ?>
-    <figure class="image_container<?php echo $this->floatClass; ?>"<?php if ($this->margin): ?> style="<?php echo $this->margin; ?>"<?php endif; ?>>
+    <figure class="image_container<?= $this->floatClass; ?>"<?php if ($this->margin): ?> style="<?= $this->margin; ?>"<?php endif; ?>>
 
       <?php if ($this->href): ?>
-        <a href="<?php echo $this->href; ?>"<?php echo $this->attributes; ?> title="<?php echo $this->alt; ?>">
+        <a href="<?= $this->href; ?>"<?= $this->attributes; ?> title="<?= $this->alt; ?>">
       <?php endif; ?>
 
       <?php $this->insert('picture_default', $this->picture); ?>
@@ -15,13 +15,13 @@
       <?php endif; ?>
 
       <?php if ($this->caption): ?>
-        <figcaption class="caption" style="width:<?php echo $this->arrSize[0]; ?>px"><?php echo $this->caption; ?></figcaption>
+        <figcaption class="caption" style="width:<?= $this->arrSize[0]; ?>px"><?= $this->caption; ?></figcaption>
       <?php endif; ?>
 
     </figure>
   <?php endif; ?>
 
 
-  <div class="title"><a href="<?php echo $this->href; ?>"><?php echo $this->title; ?></a></div>
+  <div class="title"><a href="<?= $this->href; ?>"><?= $this->title; ?></a></div>
 
 </div>

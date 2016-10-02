@@ -1,27 +1,27 @@
 
 <div class="album_full block">
 
-  <h2><?php echo $this->title; ?></h2>
+  <h2><?= $this->title; ?></h2>
 
   <?php if ($this->hasMetaFields): ?>
-    <p class="info"><time datetime="<?php echo $this->datetime; ?>"><?php echo $this->date; ?></time> <?php echo $this->location; ?> <?php echo $this->photographer; ?> </p>
+    <p class="info"><time datetime="<?= $this->datetime; ?>"><?= $this->date; ?></time> <?= $this->location; ?> <?= $this->photographer; ?> </p>
   <?php endif; ?>
 
   <?php if ($this->teaser): ?>
-	<p class="teaser"><?php echo $this->teaser; ?></p>
+	<p class="teaser"><?= $this->teaser; ?></p>
   <?php endif; ?>
 
 
   <?php foreach ($this->body as $image): ?>
-        <div class="image <?php echo $this->itemClass; ?>">
-          <figure class="image_container"<?php if ($image->margin): ?> style="<?php echo $image->margin; ?>"<?php endif; ?>>
+        <div class="image <?= $this->itemClass; ?>">
+          <figure class="image_container"<?php if ($image->margin): ?> style="<?= $image->margin; ?>"<?php endif; ?>>
             <?php if ($image->href): ?>
-              <a href="<?php echo $image->href; ?>"<?php echo $image->attributes; ?> title="<?php echo $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
+              <a href="<?= $image->href; ?>"<?= $image->attributes; ?> title="<?= $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
             <?php else: ?>
               <?php $this->insert('picture_default', $image->picture); ?>
             <?php endif; ?>
             <?php if ($image->caption): ?>
-              <figcaption class="caption" style="width:<?php echo $image->arrSize[0]; ?>px"><?php echo $image->caption; ?></figcaption>
+              <figcaption class="caption" style="width:<?= $image->arrSize[0]; ?>px"><?= $image->caption; ?></figcaption>
             <?php endif; ?>
           </figure>
         </div>

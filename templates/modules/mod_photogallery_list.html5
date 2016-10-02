@@ -3,12 +3,12 @@
 <?php $this->block('content'); ?>
 
   <?php if (empty($this->albums)): ?>
-    <p class="empty"><?php echo $this->empty; ?></p>
+    <p class="empty"><?= $this->empty; ?></p>
   <?php else: ?>
     <div class="albums_list">
       <?php foreach($this->albums as $albums) { echo '<div class="row">'.implode('', $albums).'</div>'; } ?>
     </div>
-    <?php echo $this->pagination; ?>
+    <?= $this->pagination; ?>
   <?php endif; ?>
 
 <?php $this->endblock(); ?>
