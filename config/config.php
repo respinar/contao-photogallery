@@ -31,8 +31,8 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 (
 	'photogallery' => array
 	(
-		'photogallery_list'    => 'ModulePhotogalleryList',
-		'photogallery_detail'  => 'ModulePhotogalleryDetail'
+		'photogallery_list'   => 'ModulePhotogalleryList',
+		'photogallery_album'  => 'ModulePhotogalleryAlbum'
 	)
 ));
 

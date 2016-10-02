@@ -25,14 +25,14 @@ namespace photogallery;
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class ModulePhotogalleryDetail extends \ModulePhotogallery
+class ModulePhotogalleryAlbum extends \ModulePhotogallery
 {
 
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mod_photogallery_detail';
+	protected $strTemplate = 'mod_photogallery_album';
 
 
 	/**

@@ -19,7 +19,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_list'] =   '{title_leg
                                                                       {album_legend},item_Class,item_perRow,imgSize;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_detail'] = '{title_legend},name,headline,type;
+$GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_album'] = '{title_legend},name,headline,type;
                                                                       {catalog_legend},photogalleries;
                                                                       {template_legend},photogallery_metaFields,album_template,customTpl;
                                                                       {image_legend},item_Class,item_perRow,imgSize,sortBy,fullsize;
@@ -161,7 +161,7 @@ class tl_module_photogallery extends Backend
 	public function getDetailModules()
 	{
 		$arrModules = array();
-		$objModules = $this->Database->execute("SELECT m.id, m.name, t.name AS theme FROM tl_module m LEFT JOIN tl_theme t ON m.pid=t.id WHERE m.type='photogallery_detail' ORDER BY t.name, m.name");
+		$objModules = $this->Database->execute("SELECT m.id, m.name, t.name AS theme FROM tl_module m LEFT JOIN tl_theme t ON m.pid=t.id WHERE m.type='photogallery_album' ORDER BY t.name, m.name");
 
 		while ($objModules->next())
 		{

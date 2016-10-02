@@ -2,7 +2,9 @@
 
 <?php $this->block('content'); ?>
 
-  <?= $this->albums; ?>
+  <div class="album_container">
+    <?= $this->albums; ?>
+  </div>
 
   <!-- indexer::stop -->
   <p class="back"><a href="<?= $this->referer; ?>" title="<?= $this->back; ?>"><?= $this->back; ?></a></p>

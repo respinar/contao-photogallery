@@ -29,9 +29,9 @@ ClassLoader::addClasses(array
 	'photogallery\Photogallery'              => 'system/modules/photogallery/classes/Photogallery.php',
 
 	// Modules
-	'photogallery\ModulePhotogalleryList'    => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
-	'photogallery\ModulePhotogalleryDetail'  => 'system/modules/photogallery/modules/ModulePhotogalleryDetail.php',
 	'photogallery\ModulePhotogallery'        => 'system/modules/photogallery/modules/ModulePhotogallery.php',
+	'photogallery\ModulePhotogalleryList'    => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
+	'photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/modules/ModulePhotogalleryAlbum.php',	
 
 	// Models
 	'photogallery\PhotogalleryModel' => 'system/modules/photogallery/models/PhotogalleryModel.php',
@@ -45,7 +45,7 @@ ClassLoader::addClasses(array
 TemplateLoader::addFiles(array
 (
 	'mod_photogallery_list'   => 'system/modules/photogallery/templates/modules',
-	'mod_photogallery_detail' => 'system/modules/photogallery/templates/modules',
+	'mod_photogallery_album'  => 'system/modules/photogallery/templates/modules',
 	'album_full'              => 'system/modules/photogallery/templates/album',
-	'album_short'             => 'system/modules/photogallery/templates/album',
+	'album_teaser'            => 'system/modules/photogallery/templates/album',
 ));
