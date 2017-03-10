@@ -146,12 +146,12 @@ class tl_module_photogallery extends Backend
 
 	/**
 	 * Return all prices templates as array
-	 * @param object
+	 *
 	 * @return array
 	 */
-	public function getAlbumTemplates(DataContainer $dc)
+	public function getAlbumTemplates()
 	{
-		return $this->getTemplateGroup('album_', $dc->activeRecord->pid);
+		return $this->getTemplateGroup('album_');
 	}
 
 	/**
