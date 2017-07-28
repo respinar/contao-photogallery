@@ -149,6 +149,7 @@ abstract class ModulePhotogallery extends \Module
 		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
 		$objTemplate->itemClass = $this->item_Class;
 
+		$objTemplate->photogallery_list_Class = $this->photogallery_list_Class;
 
 		$objTemplate->title       = $objAlbum->title;
 		$objTemplate->alias       = $objAlbum->alias;
@@ -414,10 +415,8 @@ abstract class ModulePhotogallery extends \Module
             
             $objAlbum = $objAlbums->current();
             
-			$arrAlbums[] = $this->parseAlbum($objAlbum, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : '') . ((($count % $this->item_perRow) == 0) ? ' last_col' : '') . ((($count % $this->item_perRow) == 1) ? ' first_col' : ''), $count);
+			$arrAlbums[] = $this->parseAlbum($objAlbum, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : ''), $count);
 		}
-
-		$arrAlbums = array_chunk($arrAlbums,$this->item_perRow);
 
 		return $arrAlbums;
 	}

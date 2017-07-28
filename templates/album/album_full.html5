@@ -11,21 +11,22 @@
 	<p class="teaser"><?= $this->teaser; ?></p>
   <?php endif; ?>
 
-
-  <?php foreach ($this->body as $image): ?>
-        <div class="image <?= $this->itemClass; ?>">
-          <figure class="image_container"<?php if ($image->margin): ?> style="<?= $image->margin; ?>"<?php endif; ?>>
-            <?php if ($image->href): ?>
-              <a href="<?= $image->href; ?>"<?= $image->attributes; ?> title="<?= $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
-            <?php else: ?>
-              <?php $this->insert('picture_default', $image->picture); ?>
-            <?php endif; ?>
-            <?php if ($image->caption): ?>
-              <figcaption class="caption" style="width:<?= $image->arrSize[0]; ?>px"><?= $image->caption; ?></figcaption>
-            <?php endif; ?>
-          </figure>
-        </div>
-  <?php endforeach; ?>
+  <div class="list_container <?= $this->photogallery_list_Class; ?>">
+    <?php foreach ($this->body as $image): ?>
+          <div class="image <?= $this->itemClass; ?>">
+            <figure class="image_container">
+              <?php if ($image->href): ?>
+                <a href="<?= $image->href; ?>"<?= $image->attributes; ?> alt="<?= $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
+              <?php else: ?>
+                <?php $this->insert('picture_default', $image->picture); ?>
+              <?php endif; ?>
+              <?php if ($image->caption): ?>
+                <figcaption class="caption" style="width:<?= $image->arrSize[0]; ?>px"><?= $image->caption; ?></figcaption>
+              <?php endif; ?>
+            </figure>
+          </div>
+    <?php endforeach; ?>
+  </div>
 
 
 

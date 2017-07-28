@@ -1,0 +1,12 @@
+        <div class="image <?= $this->itemClass; ?>">
+          <figure class="image_container">
+            <?php if ($image->href): ?>
+              <a href="<?= $image->href; ?>"<?= $image->attributes; ?> alt="<?= $image->alt; ?>"><?php $this->insert('picture_default', $image->picture); ?></a>
+            <?php else: ?>
+              <?php $this->insert('picture_default', $image->picture); ?>
+            <?php endif; ?>
+            <?php if ($image->caption): ?>
+              <figcaption class="caption" style="width:<?= $image->arrSize[0]; ?>px"><?= $image->caption; ?></figcaption>
+            <?php endif; ?>
+          </figure>
+        </div>
