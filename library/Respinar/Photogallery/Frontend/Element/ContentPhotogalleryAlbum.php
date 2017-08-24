@@ -45,11 +45,18 @@ class ContentPhotogalleryAlbum extends \ContentPhotogallery
 		{
 			$objTemplate = new \BackendTemplate('be_wildcard');
 
-			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['photogallery_detail'][0]) . ' ###';
+			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['photogallery_album'][0]) . ' ###';
+
+			$objAlbum = \PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
+
 			$objTemplate->title = $this->headline;
-			$objTemplate->id = $this->id;
-			$objTemplate->link = $this->name;
-			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+			$objTemplate->id = $objAlbum->id;
+			$objTemplate->link = $objAlbum->title;
+			$objTemplate->href = 'contao/main.php?do=photogallery&amp;table=tl_photogallery_album&amp;act=edit&amp;id=' . $objAlbum->id;
+
+			$objFile = \FilesModel::findByUuid($objAlbum->singleSRC);
+			
+			$objTemplate->singleSRC = $objFile->path;
 
 			return $objTemplate->parse();
 		}
