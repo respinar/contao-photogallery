@@ -32,7 +32,7 @@ class ContentPhotogalleryAlbum extends \ContentPhotogallery
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mod_photogallery_album';
+	protected $strTemplate = 'ce_photogallery_album';
 
 
 	/**
@@ -74,27 +74,9 @@ class ContentPhotogalleryAlbum extends \ContentPhotogallery
 
 		global $objPage;
 
-		$this->Template->albums = '';
-		$this->Template->referer = 'javascript:history.go(-1)';
-		$this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
-
 		$objAlbum = \PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
 
-		// Overwrite the page title
-		if ($objAlbum->title != '')
-		{
-			$objPage->pageTitle = strip_tags(strip_insert_tags($objAlbum->title));
-		}
-
-		// Overwrite the page description
-		if ($objProduct->description != '')
-		{
-			$objPage->description = $this->prepareMetaDescription($objAlbum->description);
-		}
-
-		$arrAlbum = $this->parseAlbumFull($objAlbum);
-
-		$this->Template->albums = $arrAlbum;
+		$this->Template->album = $this->parseAlbumFull($objAlbum);
 
 	}
 }

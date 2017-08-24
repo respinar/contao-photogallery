@@ -44,5 +44,6 @@ TemplateLoader::addFiles(array
 	'album_full'             => 'system/modules/photogallery/templates/album',
 	'mod_photogallery_list'  => 'system/modules/photogallery/templates/modules',
 	'mod_photogallery_album' => 'system/modules/photogallery/templates/modules',
+	'ce_photogallery_album'  => 'system/modules/photogallery/templates/elements',
 	'photogallery_image'     => 'system/modules/photogallery/templates/image',
 ));
