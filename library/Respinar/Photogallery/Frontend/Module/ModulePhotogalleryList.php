@@ -15,7 +15,7 @@
 /**
  * Namespace
  */
-namespace photogallery;
+namespace Respinar\Photogallery;
 
 
 /**

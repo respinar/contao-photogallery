@@ -15,7 +15,7 @@
 /**
  * Namespace
  */
-namespace photogallery;
+namespace Respinar\Photogallery;
 
 
 /**
@@ -128,4 +128,46 @@ class Photogallery extends \Frontend
 		// Link to the default page
 		return sprintf($strUrl, (($objItem->alias != '' && !\Config::get('disableAlias')) ? $objItem->alias : $objItem->id));
 	}
+
+
+	public function albumURLInsertTags($strTag)
+    {
+		
+        // Parameter abtrennen
+        $arrSplit = explode('::', $strTag);
+
+        if ($arrSplit[0] != 'album_url')
+        {
+            //nicht unser Insert-Tag
+            return false;
+        }
+
+		// Parameter angegeben?
+        if (isset($arrSplit[1]))
+        {
+            // Get the items
+			if (($objAlbum = \PhotogalleryAlbumModel::findPublishedByIdOrAlias($arrSplit[1])) === null)
+			{
+				return false;
+			}
+
+			$objPhotogallery  = \PhotogalleryModel::findBy('id',$objAlbum->pid);
+
+			$objParent = \PageModel::findWithDetails($objPhotogallery->jumpTo);
+
+			// Set the domain (see #6421)
+			$domain = ($objParent->rootUseSSL ? 'https://' : 'http://') . ($objParent->domain ?: \Environment::get('host')) . TL_PATH . '/';
+
+			// Generate the URL
+			$strUrl = $domain . $this->generateFrontendUrl($objParent->row(), ((\Config::get('useAutoItem') && !\Config::get('disableAlias')) ?  '/%s' : '/items/%s'), $objParent->language);
+	
+			$link = $this->getLink($objAlbum, $strUrl);
+
+			return $link;
+        }
+        else
+        {
+            return 'Fehler! foo ohne Parameter!';
+        }
+    }
 }

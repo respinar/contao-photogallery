@@ -3,11 +3,9 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
- * @package Photogallery
- * @link    https://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * @license LGPL-3.0+
  */
 
 
@@ -16,7 +14,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'photogallery',
+	'Respinar\Photogallery',
 ));
 
 
@@ -25,17 +23,15 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	// Classes
-	'photogallery\Photogallery'              => 'system/modules/photogallery/classes/Photogallery.php',
-
-	// Modules
-	'photogallery\ModulePhotogallery'        => 'system/modules/photogallery/modules/ModulePhotogallery.php',
-	'photogallery\ModulePhotogalleryList'    => 'system/modules/photogallery/modules/ModulePhotogalleryList.php',
-	'photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/modules/ModulePhotogalleryAlbum.php',	
-
-	// Models
-	'photogallery\PhotogalleryModel' => 'system/modules/photogallery/models/PhotogalleryModel.php',
-	'photogallery\PhotogalleryAlbumModel'    => 'system/modules/photogallery/models/PhotogalleryAlbumModel.php',
+	// Library
+	'Respinar\Photogallery\ModulePhotogalleryList'   => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryList.php',
+	'Respinar\Photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryAlbum.php',
+	'Respinar\Photogallery\ModulePhotogallery'       => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogallery.php',
+	'Respinar\Photogallery\ContentPhotogallery'      => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Element/ContentPhotogallery.php',
+	'Respinar\Photogallery\ContentPhotogalleryAlbum' => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Element/ContentPhotogalleryAlbum.php',
+	'Respinar\Photogallery\Photogallery'             => 'system/modules/photogallery/library/Respinar/Photogallery/Photogallery.php',
+	'Respinar\Photogallery\PhotogalleryAlbumModel'   => 'system/modules/photogallery/library/Respinar/Photogallery/Model/PhotogalleryAlbumModel.php',
+	'Respinar\Photogallery\PhotogalleryModel'        => 'system/modules/photogallery/library/Respinar/Photogallery/Model/PhotogalleryModel.php',
 ));
 
 
@@ -44,8 +40,9 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_photogallery_list'   => 'system/modules/photogallery/templates/modules',
-	'mod_photogallery_album'  => 'system/modules/photogallery/templates/modules',
-	'album_full'              => 'system/modules/photogallery/templates/album',
-	'album_teaser'            => 'system/modules/photogallery/templates/album',
+	'album_teaser'           => 'system/modules/photogallery/templates/album',
+	'album_full'             => 'system/modules/photogallery/templates/album',
+	'mod_photogallery_list'  => 'system/modules/photogallery/templates/modules',
+	'mod_photogallery_album' => 'system/modules/photogallery/templates/modules',
+	'photogallery_image'     => 'system/modules/photogallery/templates/image',
 ));

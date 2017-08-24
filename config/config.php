@@ -36,7 +36,22 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 	)
 ));
 
+/**
+ * Content elements
+ */
+
+ array_insert($GLOBALS['TL_CTE'], 2, array
+ (
+	 'photogallery' => array
+	 (
+		 'photogallery_album'    => 'ContentPhotogalleryAlbum',
+	 )
+ ));
+
 $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Photogallery', 'getSearchablePages');
+
+// Registrieren im Hooks replaceInsertTags
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('Photogallery', 'albumURLInsertTags');
 
 
 /**

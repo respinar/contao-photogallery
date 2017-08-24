@@ -34,7 +34,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['photogalleries'] = array
 	'label'                => &$GLOBALS['TL_LANG']['tl_module']['photogalleries'],
 	'exclude'              => true,
 	'inputType'            => 'checkbox',
-	'options_callback'     => array('tl_module_photogallery', 'getCategories'),
+	'foreignKey'           => 'tl_photogallery.title',
 	'eval'                 => array('multiple'=>true, 'mandatory'=>true),
     'sql'                  => "blob NULL"
 );
@@ -116,31 +116,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sortBy'] = array
  */
 class tl_module_photogallery extends Backend
 {
-
-	/**
-	 * Get all news archives and return them as array
-	 * @return array
-	 */
-	public function getCategories()
-	{
-		//if (!$this->User->isAdmin && !is_array($this->User->news))
-		//{
-		//	return array();
-		//}
-
-		$arrCategories = array();
-		$objCategories = $this->Database->execute("SELECT id, title FROM tl_photogallery ORDER BY title");
-
-		while ($objCategories->next())
-		{
-			//if ($this->User->hasAccess($objArchives->id, 'news'))
-			//{
-				$arrCategories[$objCategories->id] = $objCategories->title;
-			//}
-		}
-
-		return $arrCategories;
-	}
 
 	/**
 	 * Return all prices templates as array
