@@ -15,14 +15,14 @@
 $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_list'] =   '{title_legend},name,headline,type;
                                                                       {catalog_legend},photogalleries;
                                                                       {config_legend},photogallery_featured,photogallery_detailModule,numberOfItems,perPage,skipFirst;
-                                                                      {template_legend},photogallery_metaFields,album_template,customTpl;
-                                                                      {album_legend},photogallery_list_Class,item_Class,imgSize;
+                                                                      {template_legend},photogallery_metaFields,photogallery_template,customTpl;
+                                                                      {album_legend},imgSize,photogallery_listClass,photogallery_itemClass;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['photogallery_album'] = '{title_legend},name,headline,type;
                                                                       {catalog_legend},photogalleries;
-                                                                      {template_legend},photogallery_metaFields,album_template,customTpl;
-                                                                      {image_legend},photogallery_list_Class,item_Class,imgSize,sortBy,fullsize;
+                                                                      {template_legend},photogallery_metaFields,photogallery_template,customTpl;
+                                                                      {image_legend},imgSize,fullsize,photogallery_listClass,photogallery_itemClass,photogallery_sortBy;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 
@@ -38,9 +38,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['photogalleries'] = array
 	'eval'                 => array('multiple'=>true, 'mandatory'=>true),
     'sql'                  => "blob NULL"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['album_template'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_template'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_module']['album_template'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_module']['photogallery_template'],
 	'exclude'              => true,
 	'inputType'            => 'select',
 	'options_callback'     => array('tl_module_photogallery', 'getAlbumTemplates'),
@@ -53,7 +53,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_featured'] = array
 	'default'                 => 'all',
 	'exclude'                 => true,
 	'inputType'               => 'select',
-	'options'                 => array('all', 'featured', 'unfeatured'),
+	'options'                 => array('all_album', 'featured_album', 'unfeatured_album'),
 	'reference'               => &$GLOBALS['TL_LANG']['tl_module'],
 	'eval'                    => array('tl_class'=>'w50'),
 	'sql'                     => "varchar(20) NOT NULL default ''"
@@ -79,25 +79,25 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_detailModule'] = array
 	'eval'                    => array('includeBlankOption'=>true, 'tl_class'=>'w50'),
 	'sql'                     => "int(10) unsigned NOT NULL default '0'"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_list_Class'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_itemClass'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['photogallery_list_Class'],
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['photogallery_itemClass'],
 	'exclude'                 => true,
 	'inputType'               => 'text',
 	'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['item_Class'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_listClass'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['item_Class'],
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['photogallery_listClass'],
 	'exclude'                 => true,
 	'inputType'               => 'text',
-	'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
+	'eval'                    => array('maxlength'=>128, 'tl_class'=>'clr w50'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['sortBy'] = array
+$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_sortBy'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['sortBy'],
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['photogallery_sortBy'],
 	'exclude'                 => true,
 	'inputType'               => 'select',
 	'options'                 => array('custom', 'name_asc', 'name_desc', 'date_asc', 'date_desc', 'random'),

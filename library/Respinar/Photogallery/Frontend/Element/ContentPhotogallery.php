@@ -97,10 +97,10 @@ abstract class ContentPhotogallery extends \ContentElement
 	{
 		global $objPage;
 
-		$objTemplate = new \FrontendTemplate($this->album_template);
+		$objTemplate = new \FrontendTemplate($this->photogallery_template);
 		$objTemplate->setData($objAlbum->row());
 
-		$objTemplate->class = (($this->photogallery_item_class != '') ? ' ' . $this->photogallery_item_class : '') . $strClass;
+		$objTemplate->class = (($this->photogallery_itemClass != '') ? ' ' . $this->photogallery_itemClass : '') . $strClass;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
@@ -143,20 +143,13 @@ abstract class ContentPhotogallery extends \ContentElement
 	{
 		global $objPage;
 
-		$objTemplate = new \FrontendTemplate($this->photogallery_album_template);
+		$objTemplate = new \FrontendTemplate($this->photogallery_template);
 		$objTemplate->setData($objAlbum->row());
 
 		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
-		$objTemplate->itemClass = $this->item_Class;
+		$objTemplate->itemClass = $this->photogallery_itemClass;
 
 		$objTemplate->photogallery_list_Class = $this->photogallery_list_Class;
-
-		$objTemplate->title       = $objAlbum->title;
-		$objTemplate->alias       = $objAlbum->alias;
-
-		$objTemplate->description = $objAlbum->description;
-		$objTemplate->keywords    = $objAlbum->keywords;
-		$objTemplate->teaser      = $objAlbum->teaser;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);

@@ -11,7 +11,7 @@
 	<p class="teaser"><?= $this->teaser; ?></p>
   <?php endif; ?>
 
-  <div class="list_container <?= $this->photogallery_list_Class; ?>">
+  <div class="list_container <?= $this->photogallery_listClass; ?>">
     <?php foreach ($this->body as $image): ?>
           <div class="image <?= $this->itemClass; ?>">
             <figure class="image_container">

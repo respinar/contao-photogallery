@@ -16,13 +16,13 @@
  */
 
 $GLOBALS['TL_LANG']['tl_module']['photogalleries']            = array('Photogalleries','Please select one or more photogalleries.');
-$GLOBALS['TL_LANG']['tl_module']['album_template']            = array('Album template','Here you can select the album template.');
+$GLOBALS['TL_LANG']['tl_module']['photogallery_template']     = array('Album template','Here you can select the album template.');
 $GLOBALS['TL_LANG']['tl_module']['photogallery_featured']     = array('Feature albums','Here you can choose how featured albums are handled.');
-$GLOBALS['TL_LANG']['tl_module']['photogallery_metaFields']   = array('Meta fields','Here you can select the meta fields.');
+$GLOBALS['TL_LANG']['tl_module']['photogallery_metaFields']   = array('Album Meta fields','Here you can select the meta fields.');
 $GLOBALS['TL_LANG']['tl_module']['photogallery_detailModule'] = array('Album detail module','Automatically switch to the album module if an item has been selected.');
-$GLOBALS['TL_LANG']['tl_module']['item_Class']                = array('Item CSS class','Here you can set one or more classes for items.');
-$GLOBALS['TL_LANG']['tl_module']['item_perRow']               = array('Item per row','The number of items per row.');
-$GLOBALS['TL_LANG']['tl_module']['sortBy']                    = array('Sory by','Here you can select the sorting fields.');
+$GLOBALS['TL_LANG']['tl_module']['photogallery_listClass']    = array('Album list CSS class','Here you can set one or more classes for albums list.');
+$GLOBALS['TL_LANG']['tl_module']['photogallery_itemClass']    = array('Album item CSS class','Here you can set one or more classes for album items.');
+$GLOBALS['TL_LANG']['tl_module']['photogallery_sortBy']       = array('Album Sort by','Here you can select the sorting fields.');
 
 /**
  * Legends
@@ -30,9 +30,9 @@ $GLOBALS['TL_LANG']['tl_module']['sortBy']                    = array('Sory by',
 
 $GLOBALS['TL_LANG']['tl_module']['album_legend']   = 'Album settings';
 
-$GLOBALS['TL_LANG']['tl_module']['all']          = 'All albums';
-$GLOBALS['TL_LANG']['tl_module']['featured']     = 'Featured albums';
-$GLOBALS['TL_LANG']['tl_module']['unfeatured']   = 'Unfeatured albums';
+$GLOBALS['TL_LANG']['tl_module']['all_album']        = 'All albums';
+$GLOBALS['TL_LANG']['tl_module']['featured_album']   = 'Featured albums';
+$GLOBALS['TL_LANG']['tl_module']['unfeatured_album'] = 'Unfeatured albums';
 
 $GLOBALS['TL_LANG']['tl_module']['custom']       = 'Custom order';
 $GLOBALS['TL_LANG']['tl_module']['name_asc']     = 'Title (A-Z)';

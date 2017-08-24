@@ -97,10 +97,12 @@ abstract class ModulePhotogallery extends \Module
 	{
 		global $objPage;
 
-		$objTemplate = new \FrontendTemplate($this->album_template);
+		echo "Hamid ";
+
+		$objTemplate = new \FrontendTemplate($this->photogallery_template);
 		$objTemplate->setData($objAlbum->row());
 
-		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
+		$objTemplate->class = (($this->photogallery_itemClass != '') ? ' ' . $this->photogallery_itemClass : '') . $strClass;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
@@ -143,20 +145,13 @@ abstract class ModulePhotogallery extends \Module
 	{
 		global $objPage;
 
-		$objTemplate = new \FrontendTemplate($this->album_template);
+		$objTemplate = new \FrontendTemplate($this->photogallery_template);
 		$objTemplate->setData($objAlbum->row());
 
-		$objTemplate->class = (($this->item_Class != '') ? ' ' . $this->item_Class : '') . $strClass;
-		$objTemplate->itemClass = $this->item_Class;
+		$objTemplate->class = (($this->photogallery_itemClass != '') ? ' ' . $this->photogallery_itemClass : '') . $strClass;
+		$objTemplate->itemClass = $this->photogallery_itemClass;
 
-		$objTemplate->photogallery_list_Class = $this->photogallery_list_Class;
-
-		$objTemplate->title       = $objAlbum->title;
-		$objTemplate->alias       = $objAlbum->alias;
-
-		$objTemplate->description = $objAlbum->description;
-		$objTemplate->keywords    = $objAlbum->keywords;
-		$objTemplate->teaser      = $objAlbum->teaser;
+		$objTemplate->photogallery_listClass = $this->photogallery_listClass;
 
 		$objTemplate->href        = $this->generateAlbumUrl($objAlbum, $blnAddCategory);
 		$objTemplate->more        = $this->generateLink($GLOBALS['TL_LANG']['MSC']['moredetail'], $objAlbum, $blnAddCategory, true);
@@ -307,7 +302,7 @@ abstract class ModulePhotogallery extends \Module
 		}
 
 		// Sort array
-		switch ($this->sortBy)
+		switch ($this->photogallery_sortBy)
 		{
 			default:
 			case 'name_asc':
@@ -412,9 +407,9 @@ abstract class ModulePhotogallery extends \Module
 
 		while ($objAlbums->next())
 		{
-            
+
             $objAlbum = $objAlbums->current();
-            
+
 			$arrAlbums[] = $this->parseAlbum($objAlbum, $blnAddCategory, ((++$count == 1) ? ' first' : '') . (($count == $limit) ? ' last' : ''), $count);
 		}
 

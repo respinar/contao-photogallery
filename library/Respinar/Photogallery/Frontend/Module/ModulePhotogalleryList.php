@@ -87,11 +87,11 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 		}
 
 		// Handle featured news
-		if ($this->photogallery_featured == 'featured')
+		if ($this->photogallery_featured == 'featured_album')
 		{
 			$blnFeatured = true;
 		}
-		elseif ($this->photogallery_featured == 'unfeatured')
+		elseif ($this->photogallery_featured == 'unfeatured_album')
 		{
 			$blnFeatured = false;
 		}
@@ -171,7 +171,7 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 			$this->Template->albums = $this->parseAlbums($objAlbums);
 		}
 
-		$this->Template->gategories = $this->photogalleries;
+		//$this->Template->categories = $this->photogalleries;
 
 	}
 }

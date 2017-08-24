@@ -14,8 +14,8 @@
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['photogallery_album'] = '{title_legend},name,headline,type;
                                                                       {album_legend},photogallery_album;
-                                                                      {template_legend},photogallery_metaFields,photogallery_album_template,customTpl;
-                                                                      {image_legend},size,photogallery_item_class;
+                                                                      {template_legend},photogallery_metaFields,photogallery_template,customTpl;
+                                                                      {image_legend},size,photogallery_itemClass;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 
@@ -31,7 +31,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_album'] = array
 	'eval'                 => array('helpwizard'=>true,'chosen'=>true,'multiple'=>false, 'mandatory'=>true),
     'sql'                  => "blob NULL"
 );
-$GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_album_template'] = array
+$GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_template'] = array
 (
 	'label'                => &$GLOBALS['TL_LANG']['tl_content']['photogallery_album_template'],
 	'exclude'              => true,
@@ -51,12 +51,12 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_metaFields'] = array
 	'eval'                    => array('multiple'=>true),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
-$GLOBALS['TL_DCA']['tl_module']['fields']['photogallery_item_Class'] = array
+$GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_itemClass'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['photogallery_item_Class'],
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['photogallery_itemClass'],
 	'exclude'                 => true,
 	'inputType'               => 'text',
-	'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
+	'eval'                    => array('maxlength'=>128, 'tl_class'=>'clr w50'),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 
