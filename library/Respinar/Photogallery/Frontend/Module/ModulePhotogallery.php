@@ -95,9 +95,7 @@ abstract class ModulePhotogallery extends \Module
 	 */
 	protected function parseAlbum($objAlbum, $blnAddCategory=false, $strClass='', $intCount=0)
 	{
-		global $objPage;
-
-		echo "Hamid ";
+		global $objPage;		
 
 		$objTemplate = new \FrontendTemplate($this->photogallery_template);
 		$objTemplate->setData($objAlbum->row());
