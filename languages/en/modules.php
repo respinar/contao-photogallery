@@ -24,3 +24,9 @@ $GLOBALS['TL_LANG']['MOD']['photogallery'] = array('Photogallery', 'Manege photo
 $GLOBALS['TL_LANG']['FMD']['photogallery']        = 'Photogallery';
 $GLOBALS['TL_LANG']['FMD']['photogallery_list']   = array('Album list', '');
 $GLOBALS['TL_LANG']['FMD']['photogallery_album']  = array('Album viewer', '');
+
+/**
+ * Front end content elemenst
+ */
+$GLOBALS['TL_LANG']['CTE']['photogallery']        = 'Photogallery';
+$GLOBALS['TL_LANG']['CTE']['photogallery_album']  = array('Album', '');
