@@ -39,14 +39,7 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 /**
  * Content elements
  */
-
-array_insert($GLOBALS['TL_CTE'], 2, array
-(
-	'photogallery' => array
-	(
-		'photogallery_album'    => 'Respinar\Photogallery\ContentPhotogalleryAlbum',
-	)
-));
+$GLOBALS['TL_CTE']['miscellaneous']['photogallery_album']   = 'Respinar\Photogallery\ContentPhotogalleryAlbum';
 
 
 $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Photogallery', 'getSearchablePages');
