@@ -15,7 +15,7 @@
 $GLOBALS['TL_DCA']['tl_content']['palettes']['photogallery_album'] = '{title_legend},type,headline;
                                                                       {album_legend},photogallery_album;
                                                                       {template_legend},photogallery_metaFields,photogallery_template,customTpl;
-                                                                      {image_legend},size,photogallery_itemClass;
+                                                                      {album_legend},size,photogallery_itemClass;
                                                                       {protected_legend:hide},protected;
                                                                       {expert_legend:hide},guests,cssID,space';
 
@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_album'] = array
 );
 $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_template'] = array
 (
-	'label'                => &$GLOBALS['TL_LANG']['tl_content']['photogallery_album_template'],
+	'label'                => &$GLOBALS['TL_LANG']['tl_content']['photogallery_template'],
 	'exclude'              => true,
 	'inputType'            => 'select',
 	'options_callback'     => array('tl_content_photogallery', 'getAlbumTemplates'),
@@ -43,7 +43,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_template'] = array
 $GLOBALS['TL_DCA']['tl_content']['fields']['photogallery_metaFields'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['photogallery_metaFields'],
-	'default'                 => array('date'),
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'options'                 => array('date','location','photographer'),
