@@ -12,7 +12,7 @@
  */
 
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['photogallery_album'] = '{title_legend},name,headline,type;
+$GLOBALS['TL_DCA']['tl_content']['palettes']['photogallery_album'] = '{title_legend},type,headline;
                                                                       {album_legend},photogallery_album;
                                                                       {template_legend},photogallery_metaFields,photogallery_template,customTpl;
                                                                       {image_legend},size,photogallery_itemClass;
