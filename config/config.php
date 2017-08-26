@@ -31,8 +31,8 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 (
 	'photogallery' => array
 	(
-		'photogallery_list'   => 'ModulePhotogalleryList',
-		'photogallery_album'  => 'ModulePhotogalleryAlbum'
+		'photogallery_list'   => 'Respinar\Photogallery\ModulePhotogalleryList',
+		'photogallery_album'  => 'Respinar\Photogallery\ModulePhotogalleryAlbum'
 	)
 ));
 
@@ -40,13 +40,14 @@ array_insert($GLOBALS['FE_MOD'], 2, array
  * Content elements
  */
 
- array_insert($GLOBALS['TL_CTE'], 2, array
- (
-	 'photogallery' => array
-	 (
-		 'photogallery_album'    => 'ContentPhotogalleryAlbum',
-	 )
- ));
+array_insert($GLOBALS['TL_CTE'], 2, array
+(
+	'photogallery' => array
+	(
+		'photogallery_album'    => 'Respinar\Photogallery\ContentPhotogalleryAlbum',
+	)
+));
+
 
 $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Photogallery', 'getSearchablePages');
 
