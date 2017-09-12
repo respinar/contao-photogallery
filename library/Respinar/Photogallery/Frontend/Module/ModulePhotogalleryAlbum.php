@@ -92,6 +92,19 @@ class ModulePhotogalleryAlbum extends \ModulePhotogallery
 			$objPage->description = $this->prepareMetaDescription($objAlbum->description);
 		}
 
+		if ($objAlbum->singleSRC != '')
+		{
+			$objModel = \FilesModel::findByUuid($objAlbum->singleSRC);
+		}
+
+		$ogTagsURL = self::replaceInsertTags('{{env::path}}{{env::request}}');
+		$ogTagsImage = self::replaceInsertTags('{{env::path}}').$objModel->path;
+
+		$GLOBALS['TL_HEAD'][] = '<meta property="og:type" content="website" />';
+		$GLOBALS['TL_HEAD'][] = '<meta property="og:title" content="'.$objAlbum->title.'" />';
+		$GLOBALS['TL_HEAD'][] = '<meta property="og:url" content="'.$ogTagsURL.'" />';
+		$GLOBALS['TL_HEAD'][] = '<meta property="og:image" content="'.$ogTagsImage.'" />';
+
 		$arrAlbum = $this->parseAlbumFull($objAlbum);
 
 		$this->Template->albums = $arrAlbum;
