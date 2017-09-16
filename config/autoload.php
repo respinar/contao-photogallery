@@ -13,7 +13,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'Respinar\Photogallery',
+	'Respinar\Photogallery',  
 ));
 
 
