@@ -9,11 +9,30 @@
  */
 
 /**
- * Register PSR-0 namespaces
+ * Register the namespaces
  */
- if (class_exists('NamespaceClassLoader')) {
-    NamespaceClassLoader::add('Respinar\Photogallery', 'system/modules/photogallery/src');
-}
+ClassLoader::addNamespaces(array
+(
+	'Respinar\Photogallery',
+));
+
+
+/**
+ * Register the classes
+ */
+ClassLoader::addClasses(array
+(
+	// src
+	'Respinar\Photogallery\ModulePhotogalleryList'   => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryList.php',
+	'Respinar\Photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryAlbum.php',
+	'Respinar\Photogallery\ModulePhotogallery'       => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogallery.php',
+	'Respinar\Photogallery\ContentPhotogallery'      => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Element/ContentPhotogallery.php',
+	'Respinar\Photogallery\ContentPhotogalleryAlbum' => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Element/ContentPhotogalleryAlbum.php',
+	'Respinar\Photogallery\Photogallery'             => 'system/modules/photogallery/src/Respinar/Photogallery/Photogallery.php',
+	'Respinar\Photogallery\PhotogalleryAlbumModel'   => 'system/modules/photogallery/src/Respinar/Photogallery/Model/PhotogalleryAlbumModel.php',
+	'Respinar\Photogallery\PhotogalleryModel'        => 'system/modules/photogallery/src/Respinar/Photogallery/Model/PhotogalleryModel.php',
+));
+
 
 /**
  * Register the templates
