@@ -8,32 +8,12 @@
  * @license LGPL-3.0+
  */
 
-
 /**
- * Register the namespaces
+ * Register PSR-0 namespaces
  */
-ClassLoader::addNamespaces(array
-(
-	'Respinar\Photogallery',
-));
-
-
-/**
- * Register the classes
- */
-ClassLoader::addClasses(array
-(
-	// Library
-	'Respinar\Photogallery\ModulePhotogalleryList'   => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryList.php',
-	'Respinar\Photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryAlbum.php',
-	'Respinar\Photogallery\ModulePhotogallery'       => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Module/ModulePhotogallery.php',
-	'Respinar\Photogallery\ContentPhotogallery'      => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Element/ContentPhotogallery.php',
-	'Respinar\Photogallery\ContentPhotogalleryAlbum' => 'system/modules/photogallery/library/Respinar/Photogallery/Frontend/Element/ContentPhotogalleryAlbum.php',
-	'Respinar\Photogallery\Photogallery'             => 'system/modules/photogallery/library/Respinar/Photogallery/Photogallery.php',
-	'Respinar\Photogallery\PhotogalleryAlbumModel'   => 'system/modules/photogallery/library/Respinar/Photogallery/Model/PhotogalleryAlbumModel.php',
-	'Respinar\Photogallery\PhotogalleryModel'        => 'system/modules/photogallery/library/Respinar/Photogallery/Model/PhotogalleryModel.php',
-));
-
+ if (class_exists('NamespaceClassLoader')) {
+    NamespaceClassLoader::add('Respinar\Photogallery', 'system/modules/photogallery/src');
+}
 
 /**
  * Register the templates
