@@ -42,10 +42,10 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 $GLOBALS['TL_CTE']['miscellaneous']['photogallery_album']   = 'Respinar\Photogallery\ContentPhotogalleryAlbum';
 
 
-$GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Photogallery', 'getSearchablePages');
+$GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Respinar\Photogallery\Photogallery', 'getSearchablePages');
 
 // Registrieren im Hooks replaceInsertTags
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('Photogallery', 'albumURLInsertTags');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('Respinar\Photogallery\Photogallery', 'albumURLInsertTags');
 
 
 /**
