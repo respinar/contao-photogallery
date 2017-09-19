@@ -31,15 +31,15 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 (
 	'photogallery' => array
 	(
-		'photogallery_list'   => 'Respinar\Photogallery\ModulePhotogalleryList',
-		'photogallery_album'  => 'Respinar\Photogallery\ModulePhotogalleryAlbum'
+		'photogallery_list'   => 'Respinar\Photogallery\Frontend\Module\ModulePhotogalleryList',
+		'photogallery_album'  => 'Respinar\Photogallery\Frontend\Module\ModulePhotogalleryAlbum'
 	)
 ));
 
 /**
  * Content elements
  */
-$GLOBALS['TL_CTE']['miscellaneous']['photogallery_album']   = 'Respinar\Photogallery\ContentPhotogalleryAlbum';
+$GLOBALS['TL_CTE']['miscellaneous']['photogallery_album']   = 'Respinar\Photogallery\Frontend\Element\ContentPhotogalleryAlbum';
 
 
 $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('Respinar\Photogallery\Photogallery', 'getSearchablePages');
