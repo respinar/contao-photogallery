@@ -15,8 +15,11 @@
 /**
  * Namespace
  */
-namespace Respinar\Photogallery;
+namespace Respinar\Photogallery\Frontend\Module;
 
+use Respinar\Photogallery\Frontend\Module\ModulePhotogallery;
+use Respinar\Photogallery\Model\PhotogalleryAlbumModel;
+use Respinar\Photogallery\Model\PhotogalleryModel;
 
 /**
  * Class ModulePhotogalleryList
@@ -25,7 +28,7 @@ namespace Respinar\Photogallery;
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class ModulePhotogalleryList extends \ModulePhotogallery
+class ModulePhotogalleryList extends ModulePhotogallery
 {
 
 	/**
@@ -103,7 +106,7 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 		$this->Template->albums = array();
 		$this->Template->empty = $GLOBALS['TL_LANG']['MSC']['emptyPhotogallery'];
 
-		$intTotal = \PhotogalleryAlbumModel::countPublishedByPids($this->photogalleries);
+		$intTotal = PhotogalleryAlbumModel::countPublishedByPids($this->photogalleries);
 
 		if ($intTotal < 1)
 		{
@@ -157,11 +160,11 @@ class ModulePhotogalleryList extends \ModulePhotogallery
 		// Get the items
 		if (isset($limit))
 		{
-			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, $limit, $offset);
+			$objAlbums = PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, $limit, $offset);
 		}
 		else
 		{
-			$objAlbums = \PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, 0, $offset);
+			$objAlbums = PhotogalleryAlbumModel::findPublishedByPids($this->photogalleries, $blnFeatured, 0, $offset);
 		}
 
 

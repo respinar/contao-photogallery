@@ -15,7 +15,7 @@
 /**
  * Namespace
  */
-namespace Respinar\Photogallery;
+namespace Respinar\Photogallery\Model;
 
 /**
  * Class PhotogalleryAlbumModel

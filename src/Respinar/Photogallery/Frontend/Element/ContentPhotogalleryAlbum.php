@@ -15,8 +15,11 @@
 /**
  * Namespace
  */
-namespace Respinar\Photogallery;
+namespace Respinar\Photogallery\Frontend\Element;
 
+use Respinar\Photogallery\Frontend\Element\ContentPhotogallery;
+use Respinar\Photogallery\Model\PhotogalleryAlbumModel;
+use Respinar\Photogallery\Model\PhotogalleryModel;
 
 /**
  * Class ModulePhotogalleryDetail
@@ -25,7 +28,7 @@ namespace Respinar\Photogallery;
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class ContentPhotogalleryAlbum extends \ContentPhotogallery
+class ContentPhotogalleryAlbum extends ContentPhotogallery
 {
 
 	/**
@@ -47,7 +50,7 @@ class ContentPhotogalleryAlbum extends \ContentPhotogallery
 
 			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['photogallery_album'][0]) . ' ###';
 
-			$objAlbum = \PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
+			$objAlbum = PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
 
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $objAlbum->id;
@@ -81,7 +84,7 @@ class ContentPhotogalleryAlbum extends \ContentPhotogallery
 
 		global $objPage;
 
-		$objAlbum = \PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
+		$objAlbum = PhotogalleryAlbumModel::findBy('id',$this->photogallery_album);
 
 		$this->Template->album = $this->parseAlbumFull($objAlbum);
 

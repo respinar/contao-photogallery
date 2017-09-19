@@ -15,7 +15,11 @@
 /**
  * Namespace
  */
-namespace Respinar\Photogallery;
+namespace Respinar\Photogallery\Frontend\Module;
+
+use Respinar\Photogallery\Frontend\Module\ModulePhotogallery;
+use Respinar\Photogallery\Model\PhotogalleryAlbumModel;
+use Respinar\Photogallery\Model\PhotogalleryModel;
 
 
 /**
@@ -25,7 +29,7 @@ namespace Respinar\Photogallery;
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */
-class ModulePhotogalleryAlbum extends \ModulePhotogallery
+class ModulePhotogalleryAlbum extends ModulePhotogallery
 {
 
 	/**

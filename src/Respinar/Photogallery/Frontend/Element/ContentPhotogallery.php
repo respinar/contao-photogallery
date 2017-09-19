@@ -15,8 +15,10 @@
 /**
  * Namespace
  */
-namespace Respinar\Photogallery;
+namespace Respinar\Photogallery\Frontend\Element;
 
+use Respinar\Photogallery\Model\PhotogalleryAlbumModel;
+use Respinar\Photogallery\Model\PhotogalleryModel;
 
 /**
  * Class ModulePhotogalleryDetail
@@ -55,7 +57,7 @@ abstract class ContentPhotogallery extends \ContentElement
 		}
 
 		$this->import('FrontendUser', 'User');
-		$objCategory = \PhotogalleryModel::findMultipleByIds($arrCategories);
+		$objCategory = PhotogalleryModel::findMultipleByIds($arrCategories);
 		$arrCategories = array();
 
 		if ($objCategory !== null)

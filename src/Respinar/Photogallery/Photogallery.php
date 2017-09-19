@@ -17,6 +17,8 @@
  */
 namespace Respinar\Photogallery;
 
+use Respinar\Photogallery\Model\PhotogalleryAlbumModel;
+use Respinar\Photogallery\Model\PhotogalleryModel;
 
 /**
  * Class Photogallery
@@ -48,7 +50,7 @@ class Photogallery extends \Frontend
 		$arrProcessed = array();
 
 		// Get all catalog categories
-		$objPhotogallery = \PhotogalleryModel::findByProtected('');
+		$objPhotogallery = PhotogalleryModel::findByProtected('');
 
 		// Walk through each archive
 		if ($objPhotogallery !== null)
@@ -100,7 +102,7 @@ class Photogallery extends \Frontend
 				$strUrl = $arrProcessed[$objPhotogallery->jumpTo];
 
 				// Get the items
-				$objAlbum = \PhotogalleryAlbumModel::findPublishedByPid($objPhotogallery->id);
+				$objAlbum = PhotogalleryAlbumModel::findPublishedByPid($objPhotogallery->id);
 
 				if ($objAlbum !== null)
 				{
@@ -146,12 +148,12 @@ class Photogallery extends \Frontend
         if (isset($arrSplit[1]))
         {
             // Get the items
-			if (($objAlbum = \PhotogalleryAlbumModel::findPublishedByIdOrAlias($arrSplit[1])) === null)
+			if (($objAlbum = PhotogalleryAlbumModel::findPublishedByIdOrAlias($arrSplit[1])) === null)
 			{
 				return false;
 			}
 
-			$objPhotogallery  = \PhotogalleryModel::findBy('id',$objAlbum->pid);
+			$objPhotogallery  = PhotogalleryModel::findBy('id',$objAlbum->pid);
 
 			$objParent = \PageModel::findWithDetails($objPhotogallery->jumpTo);
 
