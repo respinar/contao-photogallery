@@ -8,30 +8,13 @@
  * @license LGPL-3.0+
  */
 
-/**
- * Register the namespaces
- */
-ClassLoader::addNamespaces(array
-(
-	'Respinar\Photogallery',  
-));
-
 
 /**
- * Register the classes
+ * Register PSR-0 namespaces
  */
-ClassLoader::addClasses(array
-(
-	// src
-	'Respinar\Photogallery\ModulePhotogalleryList'   => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryList.php',
-	'Respinar\Photogallery\ModulePhotogalleryAlbum'  => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogalleryAlbum.php',
-	'Respinar\Photogallery\ModulePhotogallery'       => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Module/ModulePhotogallery.php',
-	'Respinar\Photogallery\ContentPhotogallery'      => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Element/ContentPhotogallery.php',
-	'Respinar\Photogallery\ContentPhotogalleryAlbum' => 'system/modules/photogallery/src/Respinar/Photogallery/Frontend/Element/ContentPhotogalleryAlbum.php',
-	'Respinar\Photogallery\Photogallery'             => 'system/modules/photogallery/src/Respinar/Photogallery/Photogallery.php',
-	'Respinar\Photogallery\PhotogalleryAlbumModel'   => 'system/modules/photogallery/src/Respinar/Photogallery/Model/PhotogalleryAlbumModel.php',
-	'Respinar\Photogallery\PhotogalleryModel'        => 'system/modules/photogallery/src/Respinar/Photogallery/Model/PhotogalleryModel.php',
-));
+ if (class_exists('NamespaceClassLoader')) {
+    NamespaceClassLoader::add('Respinar\Photogallery', 'system/modules/photogallery/src');
+}
 
 
 /**
@@ -43,6 +26,6 @@ TemplateLoader::addFiles(array
 	'album_full'             => 'system/modules/photogallery/templates/album',
 	'mod_photogallery_list'  => 'system/modules/photogallery/templates/modules',
 	'mod_photogallery_album' => 'system/modules/photogallery/templates/modules',
-	'ce_photogallery_album'  => 'system/modules/photogallery/templates/elements',
 	'photogallery_image'     => 'system/modules/photogallery/templates/image',
+	'ce_photogallery_album'  => 'system/modules/photogallery/templates/elements',
 ));
