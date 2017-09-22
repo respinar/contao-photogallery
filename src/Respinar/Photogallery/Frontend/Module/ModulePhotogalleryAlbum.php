@@ -82,7 +82,7 @@ class ModulePhotogalleryAlbum extends ModulePhotogallery
 		$this->Template->referer = 'javascript:history.go(-1)';
 		$this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
 
-		$objAlbum = \PhotogalleryAlbumModel::findPublishedByParentAndIdOrAlias(\Input::get('items'),$this->photogalleries);
+		$objAlbum = PhotogalleryAlbumModel::findPublishedByParentAndIdOrAlias(\Input::get('items'),$this->photogalleries);
 
 		if (null === $objAlbum)
 		{
