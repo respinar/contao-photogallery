@@ -37,6 +37,13 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 ));
 
 /**
+ * Register models
+ */
+
+ $GLOBALS['TL_MODELS']['tl_photogallery']       = '\\Respinar\\Photogallery\\Model\\PhotogalleryModel';
+ $GLOBALS['TL_MODELS']['tl_photogallery_album'] = '\\Respinar\\Photogallery\\Model\\PhotogalleryAlbumModel';
+
+/**
  * Content elements
  */
 $GLOBALS['TL_CTE']['miscellaneous']['photogallery_album']   = 'Respinar\Photogallery\Frontend\Element\ContentPhotogalleryAlbum';
