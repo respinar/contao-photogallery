@@ -10,14 +10,6 @@
 
 
 /**
- * Register PSR-0 namespaces
- */
- if (class_exists('NamespaceClassLoader')) {
-    NamespaceClassLoader::add('Respinar\Photogallery', 'system/modules/photogallery/src');
-}
-
-
-/**
  * Register the templates
  */
 TemplateLoader::addFiles(array
