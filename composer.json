@@ -22,14 +22,14 @@
         "contao-community-alliance/composer-plugin":"^2.4.1 || ~3.0"
    },
    "autoload": {
-        "psr-0": {
-            "Respinar\\Photogallery\\": "src/"
+        "psr-4": {
+            "Respinar\\Photogallery\\": "src/library/"
         }
     },
     "extra": {
         "contao": {
             "sources": {
-                "": "system/modules/photogallery"
+                "src": "system/modules/photogallery"
             },
             "transifex": {
                 "project": "contao-photogallery",
