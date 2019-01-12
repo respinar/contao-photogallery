@@ -3,7 +3,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2015 Leo Feyer
+ * Copyright (c) 2005-2019 Leo Feyer
  *
  * @package   photogallery
  * @author    Hamid Abbaszadeh
