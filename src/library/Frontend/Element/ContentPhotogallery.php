@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2019 Leo Feyer
  *
  * @package   photogallery
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL3
- * @copyright respinar 2014
+ * @copyright respinar 2014-2019
  */
 
 
@@ -23,7 +23,7 @@ use Respinar\Photogallery\Model\PhotogalleryModel;
 /**
  * Class ModulePhotogalleryDetail
  *
- * @copyright  respinar 2014
+ * @copyright  respinar 2014-2019
  * @author     Hamid Abbaszadeh
  * @package    Devtools
  */

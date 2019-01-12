@@ -8,7 +8,7 @@
  * @package   photogallery
  * @author    Hamid Abbaszadeh
  * @license   GNU/LGPL3
- * @copyright respinar 2014-2017
+ * @copyright respinar 2014-2019-2017
  */
 
 /**
